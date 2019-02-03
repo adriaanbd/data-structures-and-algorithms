@@ -1,6 +1,3 @@
-def mod3(n):
-	return n % 3
-
 def group_by(sequence, key_func=None):
 	d = dict()
 	if key_func is None:
