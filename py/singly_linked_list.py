@@ -16,7 +16,7 @@ class LinkedList:
     def add_front(self, node):
         if self.head is None:
             self.head = node
-            self.tail = self.head
+            self.tail = node
         else:
             node.next_pointer = self.head
         self.head = node
