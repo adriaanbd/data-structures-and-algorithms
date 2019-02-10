@@ -15,91 +15,155 @@ class SinglyLinkedListTest < MiniTest::Test
     assert_equal(0, l.size)
   end
 
-  def test_add_to_back_first_node
+  def test_add_first_node
     l = LinkedList.new
-    node = Node.new(1)
-    l.add_to_back(node)
-    assert_equal(node, l.head)
+    l.add(1)
+    assert_equal(1, l.head.key)
     assert_equal(l.head, l.tail)
     assert_equal(1, l.size)
   end
 
   def test_next_pointer
     l = LinkedList.new
-    node1 = Node.new(1)
-    node2 = Node.new(2)
-    l.add_to_back(node1)
-    l.add_to_back(node2)
-    assert_equal(node2, node1.next_pointer)
-    assert_equal(node2.key, node1.next_pointer.key)
+    l.add(1)
+    l.add(2)
+    assert_equal(2, l.head.next_pointer.key)
   end
 
   def test_is_head_and_tail
     l = LinkedList.new
-    node1 = Node.new(1)
-    node2 = Node.new(2)
-    l.add_to_back(node1)
-    l.add_to_back(node2)
-    assert_equal(node1, l.head)
-    assert_equal(node2, l.tail)
-    assert_equal(node1.key, l.head.key)
-    assert_equal(node2.key, l.tail.key)
+    l.add(1)
+    l.add(2)
+    assert_equal(1, l.head.key)
+    assert_equal(2, l.tail.key)
   end
 
   def test_head_vs_tail
     l = LinkedList.new
-    node1 = Node.new(1)
-    node2 = Node.new(2)
-    l.add_to_back(node1)
-    l.add_to_back(node2)
+    l.add(1)
+    l.add(2)
     assert(l.head != l.tail)
   end
 
   def test_get_head_by_index
     l = LinkedList.new
-    node = Node.new(1)
-    l.add_to_back(node)
-    assert_equal(node.key, l.get_by_index(0))
+    l.add(1)
+    assert_equal(1, l.get(0))
   end
 
   def test_index_vs_size
     l = LinkedList.new
-    node1 = Node.new(1)
-    l.add_to_back(node1)
+    l.add(1)
     index = 0
     assert(l.size - index == 1)
   end
 
   def test_get_tail_by_index
     l = LinkedList.new
-    node1 = Node.new(1)
-    node2 = Node.new(2)
-    l.add_to_back(node1)
-    l.add_to_back(node2)
-    assert_equal(node2.key, l.get_by_index(1))
+    l.add(1)
+    l.add(2)
+    assert_equal(2, l.get(1))
   end
 
   def test_get_raise_index_error
     l = LinkedList.new
-    node1 = Node.new(1)
-    l.add_to_back(node1)
-    assert_raises(IndexError) { l.get_by_index(1) }
+    l.add(1)
+    assert_raises(IndexError) { l.get(1) }
   end
 
-  def test_get_by_index
+  def test_get
     l = LinkedList.new
-    node1 = Node.new(1)
-    node2 = Node.new(2)
-    node3 = Node.new(3)
-    node4 = Node.new(4)
-    l.add_to_back(node1)
-    l.add_to_back(node2)
-    l.add_to_back(node3)
-    l.add_to_back(node4)
-    assert_equal(node3.key, l.get_by_index(2))
-    assert_equal(node2.key, l.get_by_index(1))
-    assert_equal(node1.key, l.get_by_index(0))
-    assert_equal(node4.key, l.get_by_index(3))
+    l.add(1)
+    l.add(2)
+    l.add(3)
+    l.add(4)
+    assert_equal(3, l.get(2))
+    assert_equal(2, l.get(1))
+    assert_equal(1, l.get(0))
+    assert_equal(4, l.get(3))
   end
+
+  def test_add_at_front_by_index
+    l = LinkedList.new
+    l.add(3)
+    l.add_at(0, 5)
+    assert_equal(5, l.head.key) # head is updated
+    assert_equal(3, l.tail.key) # tail is updated
+    assert_equal(2, l.size) # size is updated
+  end
+
+  def test_add_next_to_head_by_index
+    l = LinkedList.new
+    l.add(3)
+    l.add(5)
+    l.add_at(1, 4)
+    assert_equal(4, l.get(1)) # successful insert
+    assert_equal(3, l.head.key) # head remains
+    assert_equal(5, l.tail.key) # tail remains
+  end
+
+  def test_add_in_middle_by_index
+    l = LinkedList.new
+    l.add(3)
+    l.add(5)
+    l.add(7)
+    l.add(9)
+    l.add_at(2, 6)
+    assert_equal(6, l.get(2))
+  end
+
+  def test_add_at_index
+    l = LinkedList.new
+    l.add(3)
+    l.add(5)
+    l.add_at(1, 11)
+    l.add_at(0, 13)
+    assert_equal(11, l.get(2))
+    assert_equal(5, l.get(3))
+  end
+
+  def test_remove_and_size_reduces
+    l = LinkedList.new
+    l.add(3)
+    assert_equal(1, l.size)
+    l.remove(0)
+    assert_equal(0, l.size)
+  end
+
+  def test_remove_raise_index_error
+    l = LinkedList.new
+    l.add(3)
+    assert_raises(IndexError) { l.remove(1) }
+  end
+
+  def test_remove_second_node
+    l = LinkedList.new
+    l.add(3)
+    l.add(5)
+    l.add(7)
+    l.remove(1)
+    assert_equal(7, l.head.next_pointer.key)
+    assert_equal(l.tail.key, l.head.next_pointer.key)
+  end
+
+  def test_remove_head
+    l = LinkedList.new
+    l.add(3)
+    l.add(5)
+    l.remove(0)
+    assert_equal(5, l.head.key)
+    assert(l.head == l.tail)
+  end
+
+  def test_remove_tail
+    l = LinkedList.new
+    l.add(3)
+    l.add(5)
+    l.remove(1)
+    assert_equal(3, l.head.key, 'Head does not match')
+    assert_equal(3, l.tail.key, 'Tail does not match')
+  end
+
+
 
 end
