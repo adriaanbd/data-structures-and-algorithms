@@ -9,7 +9,8 @@ class LinkedList
     @size = 0
   end
 
-  def add_to_back(node)
+  def add(node)
+    node = Node.new(node)
     if @head.nil?
       @head = node
       @tail = node
@@ -20,7 +21,33 @@ class LinkedList
     @size += 1
   end
 
-  def get_by_index(index)
+  def add_at(index, node)
+    raise IndexError if index > @size - 1
+
+    node = Node.new(node)
+    if index.zero?
+      node.next_pointer = @head
+      @head = node
+      @tail = node if @tail.nil?
+    else
+      current_node = @head.next_pointer
+      @head.next_pointer = node if index == 1
+      count = 1
+      until count == index
+        if count == index - 1
+          next_node = current_node.next_pointer
+          node.next_pointer = next_node
+          current_node.next_pointer = node
+        end
+        current_node = current_node.next_pointer
+        count += 1
+      end
+      node.next_pointer = current_node
+    end
+    @size += 1
+  end
+
+  def get(index)
     raise IndexError if index > @size - 1
 
     return @head.key if index.zero?
@@ -30,11 +57,40 @@ class LinkedList
     current_node = @head.next_pointer
     return current_node.key if index == 1
 
-    counter = 1
-    until counter == index
+    count = 0
+    until count == index - 1
       current_node = current_node.next_pointer
-      counter += 1
+      count += 1
     end
     current_node.key
   end
+
+  def remove(index)
+    raise IndexError if index > @size - 1
+
+    if size == 1
+      @head = nil
+      @tail = nil
+    else
+      current_node = @head
+      @head = current_node.next_pointer if index.zero?
+      count = 0
+      until count == index
+        if count == index - 1
+          next_node = current_node.next_pointer
+          if index < @size - 1
+            current_node.next_pointer = next_node.next_pointer
+          else
+            @tail = current_node
+          end
+          next_node = nil
+        end
+        current_node = current_node.next_pointer
+        count += 1
+      end
+    end
+    @size -= 1
+  end
+
 end
+
