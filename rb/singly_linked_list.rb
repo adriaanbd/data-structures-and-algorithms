@@ -22,14 +22,14 @@ class LinkedList
   end
 
   def add_at(index, node)
-    raise IndexError if index > @size - 1
-
     node = Node.new(node)
-    if index.zero?
+    if index.zero? or @size.zero?
       node.next_pointer = @head
       @head = node
       @tail = node if @tail.nil?
     else
+      raise IndexError if index > @size - 1
+
       current_node = @head.next_pointer
       @head.next_pointer = node if index == 1
       count = 1
