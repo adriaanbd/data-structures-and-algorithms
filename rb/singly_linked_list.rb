@@ -21,6 +21,8 @@ class LinkedList
     @size += 1
   end
 
+
+
   def add_at(index, node)
     node = Node.new(node)
     if index.zero? or @size.zero?

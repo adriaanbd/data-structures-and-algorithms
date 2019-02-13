@@ -172,22 +172,6 @@ class SinglyLinkedListTest < MiniTest::Test
     assert_equal(1, l.size)
   end
 
-  # def multiple_add_gets
-  #   l = LinkedList.new
-  #   l.add(8)
-  #   l.add(3)
-  #   l.add_at(1, 5)
-  #   assert_equal([8,3,5], l.get_nodes)
-  # end
-  #
-  # def test_add_get_remove
-  #   l = LinkedList.new
-  #   l.add(9)
-  #   l.add(3)
-  #   l.add_at(1, 5)
-  #   l.add_at(2, 4)
-  #   l.remove(1)
-  #   assert_equal([8,4,3], l.get_nodes)
-  # end
+
 
 end
