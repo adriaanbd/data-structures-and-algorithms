@@ -1,4 +1,4 @@
-load 'node.rb'
+load 'my_node.rb'
 
 class LinkedList
   attr_accessor :head, :tail, :size
@@ -10,7 +10,7 @@ class LinkedList
   end
 
   def add(node)
-    node = Node.new(node)
+    node = MyNode.new(node)
     if @head.nil?
       @head = node
       @tail = node
@@ -24,7 +24,7 @@ class LinkedList
 
 
   def add_at(index, node)
-    node = Node.new(node)
+    node = MyNode.new(node)
     if index.zero? or @size.zero?
       node.next_pointer = @head
       @head = node
@@ -85,7 +85,6 @@ class LinkedList
           else
             @tail = current_node
           end
-          next_node = nil
         end
         current_node = current_node.next_pointer
         count += 1

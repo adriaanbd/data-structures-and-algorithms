@@ -1,6 +1,5 @@
 require 'minitest/autorun'
 load 'singly_linked_list.rb'
-load 'node.rb'
 
 class SinglyLinkedListTest < MiniTest::Test
   def test_init_returns_linked_list
