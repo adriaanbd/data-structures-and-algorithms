@@ -1,7 +1,7 @@
-load 'node.rb'
+load 'my_node.rb'
 
-class Stack
-  attr_accessor :head, :tail, :size
+class MyStack
+  attr_accessor :head, :size
 
   def initialize
     @head = nil
@@ -9,7 +9,7 @@ class Stack
   end
 
   def push(node)
-    node = Node.new(node)
+    node = MyNode.new(node)
     @head = node if @head.nil?
     node.next_pointer = @head
     @head = node
