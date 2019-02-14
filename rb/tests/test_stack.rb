@@ -72,7 +72,7 @@ class MyStackTest < MiniTest::Test
     assert_equal(0, s.size)
   end
 
-  def test_pop_on_empty_return_error
+  def test_pop_on_empty_return_nil
     s = MyStack.new
     assert_nil(s.pop)
   end
@@ -84,7 +84,7 @@ class MyStackTest < MiniTest::Test
     assert_equal(5, s.top)
   end
 
-  def test_top_on_empty_return_error
+  def test_top_on_empty_return_nil
     s = MyStack.new
     assert_nil(s.top)
   end
