@@ -11,9 +11,9 @@ class MyStack {
         const node = new my_node.MyNode(data);
         if (this.size === 0) {
             this.head = node;
-            this.min_stack = new MyNode(data);
+            this.min_stack = {...node};
         } else if (node.key < this.min_stack.key) {
-            let new_min = new MyNode(data);
+            let new_min = {...node};
             new_min.next_pointer = this.min_stack;
             this.min_stack = new_min;
         } else if (this.size > 0) {
@@ -29,7 +29,9 @@ class MyStack {
         if (this.size === 1) {
             this.head = null;
             this.min_stack = null;
-        } else if (this.min_stack == this.head) {
+            this.size = this.size - 1
+            return current_node;
+        } else if (this.min_stack.key == this.head.key) {
             this.min_stack = this.min_stack.next_pointer;
         }
         this.head = current_node.next_pointer;
@@ -38,7 +40,7 @@ class MyStack {
     };
 
     top() {
-        console.log(this.head);
+        return this.head;
     };
 
     min() {
