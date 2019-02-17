@@ -1,17 +1,25 @@
 load 'my_node.rb'
 
 class MyStack
-  attr_accessor :head, :size
+  attr_accessor :head, :min_stack, :size
 
   def initialize
     @head = nil
+    @min_stack = nil
     @size = 0
   end
 
   def push(node)
     node = MyNode.new(node)
-    @head = node if @head.nil?
-    node.next_pointer = @head
+    if @size.zero?
+      @head = node
+      @min_stack = node.dup
+    elsif node.key < @min_stack.key # new node is less than min
+      new_min = node.dup
+      new_min.next_pointer = @min_stack # new min to last min node
+      @min_stack = new_min # min node is now new node
+    end
+    node.next_pointer = @head if @size > 0
     @head = node
     @size += 1
   end
@@ -25,13 +33,19 @@ class MyStack
 
     current_node = @head
     if @size == 1
-      @size = 0
       @head = nil
-    else
-      current_node.key if @head.next_pointer.nil?
-      @head = current_node.next_pointer
-      @size -= 1
+      @min_stack = nil
+    elsif @min_stack.key == @head.key
+      @min_stack = @min_stack.next_pointer
     end
+    @head = current_node.next_pointer
+    @size -= 1
     current_node.key
+  end
+
+  def min
+    return nil if @min_stack.nil?
+
+    @min_stack.key
   end
 end
