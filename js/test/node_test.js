@@ -15,5 +15,3 @@ describe('MyNode', function() {
         });
     });
 });
-
-
