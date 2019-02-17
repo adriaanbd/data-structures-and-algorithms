@@ -1,0 +1,16 @@
+{
+  "name": "structalgo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "my_node.js",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}
