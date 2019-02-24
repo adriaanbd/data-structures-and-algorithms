@@ -1,7 +1,7 @@
 from operator import itemgetter
 import unittest
 
-from group_by import group_by
+from ..group_by import group_by
 
 
 class GroupByTests(unittest.TestCase):

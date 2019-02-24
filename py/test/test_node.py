@@ -1,5 +1,5 @@
 from unittest import TestCase
-from .node import Node
+from ..node import Node
 
 class TestNode(TestCase):
     def test_node_init(self):
