@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import unittest
 
 
-from count import count_words
+from ..count import count_words
 
 
 class CountWordsTests(unittest.TestCase):

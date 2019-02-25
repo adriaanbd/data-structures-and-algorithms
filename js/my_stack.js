@@ -29,7 +29,7 @@ class MyStack {
         if (this.size === 1) {
             this.head = null;
             this.min_stack = null;
-            this.size = this.size - 1
+            this.size = this.size - 1;
             return current_node;
         } else if (this.min_stack.key == this.head.key) {
             this.min_stack = this.min_stack.next_pointer;
@@ -40,7 +40,7 @@ class MyStack {
     };
 
     top() {
-        return this.head;
+        return this.head
     };
 
     min() {

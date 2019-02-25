@@ -40,13 +40,15 @@ describe('MyStack', function() {
             m.push(10);
             m.push(20);
             m.push(30);
+            chai.assert.strictEqual(m.min_stack.key, 10, 'min_stack equals new node.key');
             m.push(5);
             chai.assert.strictEqual(m.min_stack.key, 5, 'min_stack equals new node.key');
             m.push(7);
             m.push(9);
             m.push(4);
-            m.push(6);
             chai.assert.strictEqual(m.min_stack.key, 4, 'min_stack equals new node.key');
+            m.push(6);
+            chai.assert.strictEqual(m.head.key, 6, 'head is equal to last node on stack')
         })
     }),
 
