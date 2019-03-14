@@ -24,7 +24,3 @@ def balanced_brackets?(string)
   end
   stack.empty?
 end
-
-p balanced_brackets?('(hello)[world]') # true
-p balanced_brackets?('([)]') # false
-p balanced_brackets?('[({}{}{})([])]') # true
