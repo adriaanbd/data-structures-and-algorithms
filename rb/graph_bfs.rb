@@ -1,5 +1,6 @@
 =begin
-BFS goes through the Nodes one level at a time, so you need a structure to keep track of the next nodes to be processed.
+BFS goes through the Nodes one level at a time, 
+so you need a structure to keep track of the next nodes to be processed.
 Return an array with the given graph in BFS order.
 =end
 
@@ -17,11 +18,11 @@ def bfs(graph)
 end
 
 g = {
-  0 => [2], 
-  1 => [4], 
-  2 => [5, 0, 3], 
-  3 => [2], 
-  4 => [1, 5], 
+  0 => [2],
+  1 => [4],
+  2 => [5, 0, 3],
+  3 => [2],
+  4 => [1, 5],
   5 => [4, 2]
 }
 

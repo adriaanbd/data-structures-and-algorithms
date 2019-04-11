@@ -1,7 +1,7 @@
 require 'minitest/autorun'
-load './toy_graph.rb'
+load './graph_bfs.rb'
 
-class BackTrackingRecursionTest < Minitest::Test
+class GraphBFSTest < Minitest::Test
   def test_toy_graph
     hash = { 
       0 => [2], 
