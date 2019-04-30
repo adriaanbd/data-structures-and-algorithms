@@ -1,7 +1,7 @@
 """
 Explore Binary Trees
 
-Now, it's your turn! Your goal is to create your own binary tree.
+Your goal is to create your own binary tree.
 You should start with the most basic building block:
 
 class Node(object):
@@ -10,24 +10,18 @@ class Node(object):
         self.left = None
         self.right = None
 
-Every node has some value, and pointers to left and right children.
-
-You'll need to implement two methods: search(),
-which searches for the presence of a node in the tree,
-and print_tree(), which prints out the values of tree nodes
-in a pre-order traversal.
-
-You should attempt to use the helper methods provided to create
-recursive solutions to these functions.
-
-Let's get started!
+You'll need to implement two methods:
+1. search() => searches for the presence of a node in the tree
+2. print_tree() => prints out the values of tree nodes in a pre-order traversal.
 """
+
 
 class Node(object):
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
+
 
 class BinaryTree(object):
     def __init__(self, root):
@@ -37,23 +31,39 @@ class BinaryTree(object):
         """Return True if the value
         is in the tree, return
         False otherwise."""
+        if self.root:
+            return self.preorder_search(self.root, find_val)
         return False
 
     def print_tree(self):
         """Print out all tree nodes
         as they are visited in
         a pre-order traversal."""
+        if self.root:
+            tree = self.preorder_print(self.root)
+            return '-'.join(tree)
         return ""
 
     def preorder_search(self, start, find_val):
-        """Helper method - use this to create a 
+        """Helper method - use this to create a
         recursive search solution."""
+        if start.value == find_val:
+            return True
+        elif start.left or start.right:
+            return self.preorder_search(start.left, find_val) or \
+                self.preorder_search(start.right, find_val)
         return False
 
-    def preorder_print(self, start, traversal):
-        """Helper method - use this to create a 
+    def preorder_print(self, start, traversal=[]):
+        """Helper method - use this to create a
         recursive print solution."""
+        traversal.append(str(start.value))
+        if start.left or start.right:
+            self.preorder_print(start.left, traversal)
+            self.preorder_print(start.right, traversal)
+
         return traversal
+
 
 # Test Cases
 # Set up tree
