@@ -22,5 +22,4 @@ tests = [
 
 for case in tests:
     print(smallest_positive(case))
-
-#
+    

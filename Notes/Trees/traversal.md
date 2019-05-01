@@ -1,16 +1,30 @@
-# How to Traverse a Tree
+# Tree Traversal
 
-Trees are *not a linear data structure* like lists; so there is no clear way to traverse through them.
+## Notion
 
-## Approaches to Tree Traversal
+Generall speaking, the word Traverse means to:
 
-Mainly, we're trying to answer the following questions:
+* travel or pass across, over or through.
+* move to and from, over, across and recross.
+* go up, down or across.
 
-* Should we start at the left tree or the right tree? 
-* Should we traverse one subtree or one section of the tree?
-* Should we traverse everything at the same level first?
+*Traversal* is the act, product or result of *traversing*. Thus it is implied that a **Tree Traversal** is the act of moving through a Tree.
 
-There are two (2) broad categories to tree traversal:
+## Concept
+
+A Tree Traversal implies *visiting* or *seeing* all the nodes of a tree at least once. To *see* or to *visit* is to *know* or be *able to know* the internal structure or data of a node. Therefore, if a node has a value of 3, a left child of 4 and a right child of 5, by *visiting* this node, we'd be able to *see* this data by calling `node.value`, `node.left` or `node.right`.
+
+Tree Traversals are used for *searching*, *inserting*, or *deleting* nodes.
+
+## How to Traverse a Tree
+
+Since Trees are *not linear data structures* like lists, there is no clear way to traverse them.  In an effort to answer some of the following questions, there are two (2) broad categories to tree traversals. 
+
+* Should we start at the left subtree or the right subtree? 
+* Should we traverse one subtree or a section of the tree before moving to the next one? 
+* Or should we traverse everything at the same level first?
+
+## Tree Traversal Categories
 
 1. Depth First Search (DFS) - implies visiting *all child nodes of a subtree* before moving on to the next subtree.
 2. Breadth First Search (BFS) - implies visiting *all nodes on the same level* before visiting child nodes. 
@@ -19,35 +33,28 @@ There are two (2) broad categories to tree traversal:
 
 There are also several approaches to DFS traversals.
 
-Example Tree (fig 1):
+Example Tree:
 
-​     		A
-​		 /       \
-​	      B 	    C
-​	  / 	\
-​       D   	  E
-​			 \
-​			   F
+ ![img](https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.dEwNCti2QP7slYUr7E59KgHaGL%26pid%3DApi&f=1)
 
-#### Pre-Order traversal
+#### Preorder traversal
 
 The general idea of the algorithm is to visit a node as soon as you see it before you traverse any further in the tree.  Visiting a node implies looking at the object's value.
 
 **Algorithm**: 
 
 1. Start at the root and visit it.
-2. Pick one of its children (left by convention) and visit it.
-3. Continue visiting all left most nodes until reaching a leaf.
-4. Go back up to the leaf's parent, and visit its right child.
-5. Continue until visiting all nodes of the left subtree.
-6. Go back up to the root and visit its right child.
-7. Continue visiting all left most nodes until reaching a leaf.
-8. Go back up to the leaf's parent, and visit its right child.
-9. Continue until visiting all nodes of the right subtree.
+2. Check if there is a left child.
+3. If left child exists, visit it, repeat from step 2.
+4. Check if there is a right child.
+5. If right child exists, visit it
+6. Repeat from step 2.
+6. Traverse to parent.
+7. Repeat from step 4.
 
-By following this algorithm, the tree in reference (fig 1) would've been visited in the following order: **A B D E F C**
+By following this algorithm, the tree in reference (fig 1) would've been visited in the following order: **5 3 1 4 7 10**
 
-#### In-Order traversal
+#### Inorder traversal
 
 The general idea of the algorithm is to visit the left most leaf node of a subtree before visiting any other node in tree. Note that visiting a node implies looking at the object's value.
 
@@ -65,7 +72,7 @@ The general idea of the algorithm is to visit the left most leaf node of a subtr
 
 By following this algorithm, the tree in reference (fig 1) would've been visited in the following order: **D B F E A C**
 
-#### Post-Order traversal
+#### Postorder traversal
 
 The general idea of the algorithm is to visit all leaf nodes of a sub tree before visiting any other node in the subtree. Note that visiting a node implies looking at the object's value.
 
@@ -83,3 +90,4 @@ Algorithm:
 
 By following this algorithm, the tree in reference (fig 1) would've been visited in the following order: **D F E B C A**
 
+### Breadth First Search (BFS)

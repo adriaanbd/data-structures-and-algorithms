@@ -50,5 +50,8 @@ If we would like to insert the number 2, the insert operation is a search operat
 
 This operation is a little bit more complex, since it could involve some extra work implying re-arranging some nodes. For example, if we would like to delete 6 from the Tree, we would have to go through the search operation algorithm until we locate 6, delete it, and rearrange its children, placing either 4 or 7 as the right child of 3 and moving the remaining child either to the left of right.
 
+## Balanced Vs. Unbalanced Trees
 
+![How To Not Be Stumped By Trees – basecs – Medium](https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn-images-1.medium.com%2Fmax%2F1600%2F1*zkYif_uQsOS80Zx7L0K9pg.jpeg&f=1)
 
+An unbalanced Tree is skewed to one of the branches, meaning that either of its branches is longer than the other. The running time in this scenario is of a linear time O(n), whereas in a balanced Tree it is of O(log n).

@@ -20,7 +20,7 @@ end
 def post_order(node)
   return '' if node.nil?
 
-  "#{post_order(node.left)} #{post_order(node.right)} #{node.data} "
+  "#{post_order(node.left)} #{post_order(node.right)} #{node.data}"
 end
 
 tree = array_to_tree([10, 1, 2, 3, 4, 5, 6])
