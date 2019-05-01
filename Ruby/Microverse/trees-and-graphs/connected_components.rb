@@ -1,3 +1,4 @@
+# function to determine if all nodes in a graph are connected
 def connected_graph?(graph)
   queue = [graph.keys[0]]
   visited = []
