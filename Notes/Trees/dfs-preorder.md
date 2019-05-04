@@ -2,7 +2,7 @@
 
 ## Using a Stack
 
-Remember that a Stack if a Last In First Out (LIFO) abstract data type, which makes it a good fit for a pre-order traversal.
+Remember that a Stack is a Last In First Out (LIFO) abstract data type, which makes it a good fit for a pre-order traversal.
 
 The algorithm would go something like this:
 
