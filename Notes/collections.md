@@ -112,9 +112,96 @@ Nevertheless, we can take this idea further and extend the list to 10 => 20 => 3
 head.next.next = Node(30)
 head.next.next.next = Node(40)
 head.next.next.next.next = Node(50)
-
 print(head.next.next.value) # returns 30
 print(head.next.next.next.value) # returns 40
 print(head.next.next.next.next.value) # returns 50
+```
+
+### Traversal
+
+#### Printing all the values in a linked list
+
+The algorithm could look something like this:
+
+1. Start with the head
+2. Assign *current_node* to the *head*
+3. If *current_node* is not None, continue, else exit
+4. Print its value
+5. Assign *current_node* to *current_node.next*
+6. Repeat from Step 3
+
+We can solve this using recursion:
+
+```Python
+def print_linked_list(current_node: Node):
+    """
+    Traverses a linked list from its head 
+    and prints its value.
+    """
+    if current_node:
+        print(current_node.value)
+        print_linked_list(current_node.next)
+
+print(print_linked_list(head))
+```
+
+Or iteration:
+
+```Python
+def print_linked_list(head):
+    current_node = head
+    
+    while current_node is not None:
+        print(current_node.value)
+        current_node = current_node.next
+        
+print_linked_list(head)
+```
+
+#### Creating a linked list from an input list
+
+The algorithm is similar to printing all of the values:
+
+1. Return None if list is empty
+2. Pop the first value out of the list
+3. Assign *head* to this value
+4. Assign *current_node* to *head*
+5. While length of the list if greater than 0, execute from step 6 to 9
+6. Pop the first value out of the list
+7. Assign *current_node.next* to an instance of *Node* with this value
+8. Assign *current_node* to *current_node.next*
+9. Repeat from step 5
+10. Return head
+
+Translating it to code:
+
+O(2n)
+
+```Python
+def create_linked_list(input_list: list) -> Node:
+    if not len(input_list): # if list.empty?
+        return None
+    head = Node(input_list.pop(0)) # store head
+    current_node = head 
+    while len(input_list):
+        current_node.next = Node(input_list.pop(0))
+        current_node = current_node.next
+    return head
+```
+
+A slightly better approach would be to have both a *head* and a *tail* reference:
+
+O(n)
+
+```Python
+def create_better_linked_list(input_list, head=None, tail=None):
+    for value in input_list:
+        if head is None:
+            head = Node(value)
+            tail = head
+        else:
+            tail.next = Node(value)
+            tail = tail.next
+    return head
 ```
 

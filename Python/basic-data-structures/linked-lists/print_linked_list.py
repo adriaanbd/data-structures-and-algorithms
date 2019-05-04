@@ -1,7 +1,7 @@
 from node import Node
 
 
-def print_linked_list(current_node: Node) -> int:
+def print_linked_list(current_node: Node):
     """
     Traverses a linked list from head to None and prints its value
     """
