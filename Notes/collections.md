@@ -205,3 +205,86 @@ def create_better_linked_list(input_list, head=None, tail=None):
     return head
 ```
 
+### Types of Linked Lists
+
+There are three (3) types of linked lists:
+
+1. Singly-linked lists
+2. Doubly-linked lists
+3. Circular lists
+
+#### Singly Linked Lists
+
+Each node in the list is connected only to the next node in the list (except the last one of course); in this sense, each node has a *value* and a *next* pointer, as such:
+
+```Python
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+```
+
+To provide common linked list operations, we'd want to create a `LinkedList` class:
+
+```Python
+class LinkedList:
+    def __init__(self, head=None):
+        self.head = head
+    def append(self, value):
+        if self.head is None:
+            self.head = Node(value)
+            return
+        node = self.head
+        while node.next:
+            node = node.next
+        node.next = Node(value)
+        return
+   	def to_list(self) -> list:
+        """
+        Converts a linked list to list
+        """
+        node = self.head
+        l = []
+        while node:
+            l.append(node.value)
+            node = node.next
+        return l
+```
+
+#### Doubly Linked Lists
+
+All nodes in the list, except the *head* and *tail*, is connected to both the next node and the previous node. The *head* node is only connected to the next node, and the *tail* node is only connected to the previous node.
+
+This type of list requires modifying our previously constituted Node class, so we can add another instance variable  that can be used to reference the *previous* node.
+
+Translating it to code would look something like this:
+
+```Python
+class DoubleNode:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+        self.previous = None
+```
+
+Our `LinkedList` class is a bit different now, as we can use the new Node instance variable to speed up our traversal operations, specifically our *append* method that adds to the tail of the list:
+
+```Python
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+    def append(self, value):
+        if self.head is None:
+            self.head = DoubleNode(value)
+            self.tail = self.head
+            return
+        self.tail.next = DoubleNode(value)
+    	self.tail.next.previous = self.tail
+        self.tail = self.tail.next
+        return
+```
+
+#### Circular LinkedLists
+
+A `LinkedList` is circular when one of the nodes link back to another node in the chain. It is considered pathological because of the risk of an infinite traversal. The only way to avoid it is by detecting when a loop occurs.
