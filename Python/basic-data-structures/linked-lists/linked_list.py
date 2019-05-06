@@ -60,7 +60,7 @@ class LinkedList:
                 self.length -= 1
                 return
             node = node.next
-        raise ValueError
+        raise ValueError(f"{value} not found!")
 
     def pop(self):
         """ Return the first node's value and remove it from the list. """
