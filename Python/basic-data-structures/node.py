@@ -1,7 +1,7 @@
 class Node:
     def __init__(self, key):
         self._key = key
-        self._next_pointer = None
+        self._next = None
 
     @property
     def key(self):
@@ -9,8 +9,8 @@ class Node:
 
     @property
     def next_pointer(self):
-        return self._next_pointer
+        return self._next
 
     @next_pointer.setter
     def next_pointer(self, node):
-        self._next_pointer = node
+        self._next = node
