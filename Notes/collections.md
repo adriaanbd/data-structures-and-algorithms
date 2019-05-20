@@ -288,3 +288,67 @@ class DoublyLinkedList:
 #### Circular LinkedLists
 
 A `LinkedList` is circular when one of the nodes link back to another node in the chain. It is considered pathological because of the risk of an infinite traversal. The only way to avoid it is by detecting when a loop occurs.
+
+### Some LinkedList Operations
+
+#### Reversing a LinkedList
+
+The gist is to traverse the old list while prepending to the new list and updating the Head reference in each operation. 
+
+The algorithm could look something like this:
+
+1. Start with the head of your old LinkedList (`current_node = old_list.head`)
+2. Make a new LinkedList to store the reversed list (`new_list = LinkedList()`)
+3. Assign a new node instance of `old_list.head.value` to `new_list.head`
+4. Traverse `old_list` by assigning `current_node.next` to `current_node`, until `current_node` is `None`.
+5. In each iteration, create a new `Node` with `current_node.value`
+6. Assign `new_list.head.next` to the new `Node` instance of `current_node` and assign `new_list.head` to `new_list.head.next`
+
+#### Detecting a Loop inside a LinkedList
+
+The idea is to traverse the list at two different speeds: 
+
+* One node at a time => slow runner
+* Two nodes at a time => fast runner
+
+We can detect a loop if:
+* the next node refers back itself
+* if the fast runner and slow runner refer to the same Node instance
+
+And we can know there isn't a loop if:
+* The fast runner reaches the end of the list
+
+The algorithm:
+1. Assign `LinkedList.head` to `fast_runner` and `slow_runner`
+2. While `fast_runner.next` or `fast_runner.next.next` is not None, do step three (3), four (4) and five (5).
+3. Return False if `slow_runner.next` refer to the same Node instance as `slow_runner`
+4. Assign `slow_runner.next` to `slow_runner` and `fast_runner.next.next` to `fast_runner`
+5. Return True is `slow_runner` refer to the same Node instance as `fast_runner`
+6. Return False when the while loop is done
+
+The code:
+```python
+def is_circular(linked_list: LinkedList) -> bool:
+    """
+    Determine wether the Linked List is circular or not
+
+    Args:
+       linked_list(obj): Linked List to be checked
+    Returns:
+       bool: Return True if the linked list is circular, return False otherwise
+    """
+    slow_runner = linked_list.head
+    fast_runner = linked_list.head
+
+    while fast_runner.next and fast_runner.next.next:
+        if slow_runner.next == slow_runner:
+            return True
+
+        fast_runner = fast_runner.next.next
+        slow_runner = slow_runner.next
+        if slow_runner == fast_runner:
+            return True
+
+    return False
+```
+
