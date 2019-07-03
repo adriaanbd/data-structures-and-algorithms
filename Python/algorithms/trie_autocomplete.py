@@ -3,7 +3,7 @@ class TrieNode:
         self.children = dict()
         self.end = False
     
-    def insert(self, char):
+    def insert(self, char: str):
         if self.children.get(char) is None:
             self.children[char] = TrieNode()
     
@@ -12,7 +12,7 @@ class TrieNode:
         if suffix:
             self = self.children.get(suffix)
         
-        for letter, in self.children.keys():
+        for letter in self.children.keys():
             self.suffixes(letter, word + letter, words)
 
         if self.end and word:
