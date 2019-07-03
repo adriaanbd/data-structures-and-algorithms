@@ -8,7 +8,6 @@ class TrieNode:
             self.children[char] = TrieNode()
     
     def suffixes(self, suffix='', word='', words=[]) -> list:
-
         if suffix:
             self = self.children.get(suffix)
         
@@ -17,7 +16,7 @@ class TrieNode:
 
         if self.end and word:
             words.append(word)
-
+        
         return words
 
 
@@ -64,4 +63,5 @@ def suggestions(prefix: str):
 
 
 print(suggestions("tri"))
-# print(suggestions("ant"))
+print(suggestions("ant"))
+print(suggestions("f"))
