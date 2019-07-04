@@ -89,5 +89,3 @@ Algorithm:
 9. Repeat the process on the right subtree.
 
 By following this algorithm, the tree in reference (fig 1) would've been visited in the following order: **D F E B C A**
-
-### Breadth First Search (BFS)
