@@ -2,21 +2,21 @@ class TrieNode:
     def __init__(self):
         self.children = dict()
         self.end = False
-    
+
     def insert(self, char: str):
         if self.children.get(char) is None:
             self.children[char] = TrieNode()
-    
+
     def suffixes(self, suffix='', word='', words=[]) -> list:
         if suffix:
             self = self.children.get(suffix)
-        
+
         for letter in self.children.keys():
             self.suffixes(letter, word + letter, words)
 
         if self.end and word:
             words.append(word)
-        
+
         return words
 
 
@@ -54,14 +54,14 @@ for key in words:
     trie.insert(key)
 
 
-def suggestions(prefix: str):
-    prefix_node = trie.find(prefix)
-    if prefix_node:
-        return prefix_node.suffixes()
-    else:
-        return f"{prefix} not found"
+prefix = "tri"
+prefix_node = trie.find(prefix)
+print(prefix_node.suffixes())
 
+# prefix = "ant"
+# prefix_node = trie.find(prefix)
+# print(prefix_node.suffixes())
 
-print(suggestions("tri"))
-print(suggestions("ant"))
-print(suggestions("f"))
+# prefix = "f"
+# prefix_node = trie.find(prefix)
+# print(prefix_node.suffixes())

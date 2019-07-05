@@ -2,7 +2,7 @@ def insertion_sort(array):
     for idx in range(1, len(array) - 1):
         key = array[idx]
         moving_idx = idx - 1
-        while moving_idx > 0 and array[moving_idx] > key:
+        while moving_idx >= 0 and array[moving_idx] > key:
             array[moving_idx + 1] = array[moving_idx]
             moving_idx -= 1
         array[moving_idx + 1] = key
