@@ -1,4 +1,5 @@
 def insertion_sort(array)
+  insertions = 0
   len = array.length - 1
   indices = [*1..len]
   indices.each do |idx|
@@ -10,6 +11,7 @@ def insertion_sort(array)
     end
     array[j + 1] = key
     p "Insert => #{array}"
+    insertions += 1
   end
   array
 end
