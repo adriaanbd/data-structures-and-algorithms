@@ -38,30 +38,6 @@ class LinkedList:
             self.tail = node
         self.length += 1
 
-    def insert(self, value, pos):
-        """ Insert value at pos position in the list. If pos is larger than the
-            length of the list, append to the end of the list. """
-        if pos >= self.length - 1:
-            self.append(value)
-            return
-        elif pos == 0:
-            self.prepend(value)
-            return
-        elif pos == 1:
-            node = Node(value)
-            node.next = self.head.next
-            self.head.next = node
-            self.head.next
-        else:
-            current_node = self.head
-            new_node = Node(value)
-            for _ in range(pos - 1):
-                current_node = current_node.next
-            new_node.next = current_node.next
-            current_node.next = new_node
-        self.length += 1
-        return
-
     def size(self):
         """ Return the size or length of the linked list. """
         return self.length
