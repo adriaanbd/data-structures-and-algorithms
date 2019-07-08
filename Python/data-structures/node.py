@@ -8,9 +8,12 @@ class Node:
         return self._key
 
     @property
-    def next_pointer(self):
+    def next(self):
         return self._next
 
-    @next_pointer.setter
+    @next.setter
     def next_pointer(self, node):
         self._next = node
+
+    def __repr__(self):
+        return str(self.key)
