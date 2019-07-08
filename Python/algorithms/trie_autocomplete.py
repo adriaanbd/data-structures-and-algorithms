@@ -7,15 +7,15 @@ class TrieNode:
         if self.children.get(char) is None:
             self.children[char] = TrieNode()
 
-    def suffixes(self, suffix='', word='', words=[]) -> list:
-        if suffix:
-            self = self.children.get(suffix)
-
+    def suffixes(self, suffix='', words=[]) -> list:
         for letter in self.children.keys():
-            self.suffixes(letter, word + letter, words)
+            current_node = self.children[letter]
+            current_node.suffixes(suffix + letter, words)
 
-        if self.end and word:
-            words.append(word)
+        if self.end:
+            words.append(suffix)
+            suffix = ''
+            return
 
         return words
 
@@ -43,9 +43,8 @@ class Trie:
 
 
 words = [
-    "ant", "anthology", "antagonist", "antonym",
-    "fun", "function", "factory",
-    "trie", "trigger", "trigonometry", "tripod"
+    "trigonometry", "tripod", "trident", "trilogy",
+    "tricycle", "trinity"
 ]
 
 trie = Trie()
@@ -57,11 +56,3 @@ for key in words:
 prefix = "tri"
 prefix_node = trie.find(prefix)
 print(prefix_node.suffixes())
-
-# prefix = "ant"
-# prefix_node = trie.find(prefix)
-# print(prefix_node.suffixes())
-
-# prefix = "f"
-# prefix_node = trie.find(prefix)
-# print(prefix_node.suffixes())
