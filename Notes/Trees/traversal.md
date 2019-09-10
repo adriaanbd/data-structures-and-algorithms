@@ -41,35 +41,38 @@ Example Tree:
 
 The general idea of the algorithm is to visit a node as soon as you see it, before you traverse any further in the tree.  Visiting a node implies looking at the object's value.
 
-**Algorithm**: 
+###### Algorithm: 
 
-1. Start at root node.
-2. If left AND right child *have been visited* OR don't exist AND parent exists, traverse to parent, else exit.
-3. Visit left child if left child exists and hasn't been visited until reaching a leaf node with no left child.
+1. Visit root node.
+2. If left AND right child *have been visited* OR *don't exist* AND *parent exists*, traverse to parent, else exit.
+3. Visit left child if left child exists and hasn't been visited until reaching a leaf node.
 4. Visit right child if right child exists and hasn't been visited.
 5. Go to step 2.
 
-By following this algorithm, the tree in reference (fig 1) would've been visited in the following order: **5 3 1 4 7 10**
+By following this algorithm, the tree in reference (fig 1) is visited in the following order: **5 => 3 => 1 => 4 => 7 => 10**
 
 ##### Inorder traversal
 
-The general idea of the algorithm is to visit the left most leaf node of a subtree before visiting any other node in tree. Note that visiting a node implies looking at the object's value.
+The general idea of the algorithm is to visit the left most leaf node of a subtree before visiting any other node in tree. Note that visiting a node implies looking at the object's value. 
 
-**Algorithm:**
+###### Algorithm
 
-1. Start at the root.
-2. Traverse the left most nodes of the left subtree until reaching a leaf.
-3. Visit the leaf.
-4. Visit its parent.
-5. Traverse to the left most node of its right child until reaching a leaf.
-6. No leaf found, traverse to parent and visit right child leaf.
-7. Visit its parent.
-8. Go back to the root and visit it.
-9. Repeat the process on the right subtree.
+1. Start at root but don't visit it.
+2. If left child has not been visited:
+	* Traverse to left child until reaching a leaf node.
+	* Visit the leaf node.
+	* Traverse and visit its parent node.
+3. If right child has not been visited:
+	* Traverse to right child 
+	* Visit the node if it is a leaf node
+	* If it isn't a leaf node, go to step two (2).
+4. Traverse to parent node until reaching root node.
+5. Visit root node.
+6. Go to step two (2).
 
-By following this algorithm, the tree in reference (fig 1) would've been visited in the following order: 
+By following this algorithm, the tree in reference (fig 1) is visited in the following order: 
 
-**5 => 3 => 7 => 1 => 4 => 10**
+**1 => 3 => 4 => 5 => 7 => 10**
 
 ##### Postorder traversal
 
