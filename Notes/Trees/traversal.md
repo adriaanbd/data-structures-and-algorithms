@@ -31,7 +31,7 @@ Since Trees are *not linear data structures* like lists, there is no clear way t
 
 #### Depth First Search (DFS)
 
-There are also several approaches to DFS traversals.
+There are several approaches to DFS traversals.
 
 Example Tree:
 
@@ -58,11 +58,11 @@ The general idea of the algorithm is to visit the left most leaf node of a subtr
 ###### Algorithm
 
 1. Start at root but don't visit it.
-2. If left child has not been visited:
+2. If left child exists and has not been visited:
 	* Traverse to left child until reaching a leaf node.
 	* Visit the leaf node.
 	* Traverse and visit its parent node.
-3. If right child has not been visited:
+3. If right child exists and has not been visited:
 	* Traverse to right child 
 	* Visit the node if it is a leaf node
 	* If it isn't a leaf node, go to step two (2).
@@ -76,21 +76,22 @@ By following this algorithm, the tree in reference (fig 1) is visited in the fol
 
 ##### Postorder traversal
 
-The general idea of the algorithm is to visit all leaf nodes of a sub tree before visiting any other node in the subtree. Note that visiting a node implies looking at the object's value.
+The general idea of the algorithm is to *visit all leaf nodes of a sub tree* **before** visiting any other node in the subtree. Note that visiting a node implies looking at the object's value.
 
 Algorithm:
 
-1. Start at the root.
-2. Traverse the left most nodes of the left subtree until reaching a leaf.
-3. Visit the leaf.
-4. Traverse to to its parent.
-5. Traverse to the left most leaf node of its right child and visit it.
-6. Traverse to its parent.
-7. Visit its right child.
-8. Traverse to the root.
-9. Repeat the process on the right subtree.
+1. Start at the root but don't visit it.
+2. If left child exists and has not been visited:
+	* Traverse to left child until reaching a leaf node.
+	* Visit the leaf node.
+	* Traverse to parent node but don't visit it.
+3. If right child exists and has not been visited:
+	* Traverse to right child 
+	* Visit the node if it is a leaf node
+	* If it isn't a leaf node, go to step two (2).
+4. Traverse to parent
+5. Visit the node if both child nodes have been visited
+6. Go to step four (4) if not on root node.
+7. If on root node, go to step three (3).
 
-By following this algorithm, the tree in reference (fig 1) would've been visited in the following order: **D F E B C A**
-
-#### Breadth First Search (BFS)
-
+ By following this algorithm, the tree in reference (fig 1) would've been visited in the following order: ** 1 => 4 => 3 => 10 => 7 => 5 **
