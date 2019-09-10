@@ -45,8 +45,8 @@ The general idea of the algorithm is to visit a node as soon as you see it, befo
 
 1. Visit root node.
 2. If left AND right child *have been visited* OR *don't exist* AND *parent exists*, traverse to parent, else exit.
-3. Visit left child if left child exists and hasn't been visited until reaching a leaf node.
-4. Visit right child if right child exists and hasn't been visited.
+3. Visit left child if left child exists AND hasn't been visited until reaching a node with no left child
+4. Visit right child if right child exists AND hasn't been visited.
 5. Go to step 2.
 
 By following this algorithm, the tree in reference (fig 1) is visited in the following order: **5 => 3 => 1 => 4 => 7 => 10**
