@@ -2,12 +2,6 @@
 
 Trees are inherently unorganized. We know what the overall structure looks like, but we don't know where a specific element will be. However, if we add some rules to the ordering of elements in a tree, we could accomplish certain operations really fast. 
 
-* When would you want to use these structures?
-
-* What tasks would they speed up?
-
-* What are the pros and cons of each approach?
-
 ## Concept
 
 A BST is a type of Binary Tree because every parent node has at most two children, but the values are sorted in a particular order:
