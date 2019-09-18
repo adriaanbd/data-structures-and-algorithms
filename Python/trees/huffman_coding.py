@@ -51,8 +51,8 @@ class HuffmanCoding:
     def compress(self):
         self.set_frequencies()
         self.build_tree()
-        encoded_data = self.encode()
-        return encoded_data
+        encoded_mssg = self.encode()
+        return encoded_mssg
 
     def set_frequencies(self):
         frequencies = dict()
@@ -74,16 +74,13 @@ class HuffmanCoding:
         self.root = self.queue.queue[0]
 
     def encode(self):
-        self.path_from_node_to_root(self.root)
+        self.set_binary_codes(self.root)
         message = ''
         for char in self.data:
             message += self.codes[char]
         return message
 
-    def path_from_node_to_root(self, root, bit=None):
-        if root is None:
-            return
-
+    def set_binary_codes(self, root, bit=None):
         if bit is None:
             bit = ''
 
@@ -91,8 +88,8 @@ class HuffmanCoding:
             self.codes[root.char] = bit
             return
 
-        self.path_from_node_to_root(root.left, bit + '0')
-        self.path_from_node_to_root(root.right, bit + '1')
+        self.set_binary_codes(root.left, bit + '0')
+        self.set_binary_codes(root.right, bit + '1')
 
 
 def huffman_encoding(data):
@@ -124,6 +121,6 @@ a_great_sentence = "The bird is the word"
 encoded_data, tree = huffman_encoding(a_great_sentence)
 decoded_data = huffman_decoding(encoded_data, tree)
 
-print(encoded_data, tree)
+print(encoded_data)
 print(decoded_data)
 
