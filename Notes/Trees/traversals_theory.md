@@ -2,7 +2,7 @@
 
 ## Notion
 
-Generall speaking, the word Traverse means to:
+Generally speaking, the word Traverse means to:
 
 * travel or pass across, over or through.
 * move to and from, over, across and recross.
@@ -40,11 +40,6 @@ Since Trees are *not linear data structures* like lists, there is no clear way t
 #### Depth First Search (DFS)
 
 There are several approaches to DFS traversals and its very common to use a Last In First Out (LIFO) data structure such as a Stack to keep track of the nodes while traversing.
-
-Requirements::
-
-1. A Tree class
-2. A Stack class
 
 Example Tree:
 
